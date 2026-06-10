@@ -1,0 +1,90 @@
+<Schema name="Enade_Schema">
+  <Cube name="Cubo_Enade" visible="true" cache="true" enabled="true">
+    <Table name="fato_enade">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_estudante" highCardinality="false" name="Estudante">
+      <Hierarchy name="Dados_Estudante" visible="true" hasAll="true" allMemberName="Todos os Estudantes">
+        <Table name="dim_estudante">
+        </Table>
+        <Level name="Sexo" visible="true" column="sexo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Cor Raca" visible="true" column="cor_raca" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Faixa Etaria" visible="true" column="idade" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Tipo Escola Ensino Medio" visible="true" column="tipo_escola_ensino_medio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Renda Familiar" visible="true" column="renda_familiar" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Horas Trabalho" visible="true" column="horas_trabalho" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Primeira Geracao Universitaria" visible="true" column="primeira_geracao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Escolaridade Pai" visible="true" column="escolaridade_pai" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Escolaridade Mae" visible="true" column="escolaridade_mae" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Cotas" visible="true" column="cotas" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_curso" highCardinality="false" name="Curso">
+      <Hierarchy name="Geografia_Curso" visible="true" hasAll="true" allMemberName="Todos os Cursos">
+        <Table name="dim_curso">
+        </Table>
+        <Level name="Regiao" visible="true" column="nome_regiao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Estado" visible="true" column="nome_estado" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Municipio" visible="true" column="nome_municipio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Curso" visible="true" column="nome_curso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Modalidade" visible="true" column="modalidade_graduacao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Turno" visible="true" column="turno_graduacao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Categoria Administrativa" visible="true" column="categoria_administrativa" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_avaliacao" highCardinality="false" name="Avaliacao">
+      <Hierarchy name="Percepcao_Prova" visible="true" hasAll="true" allMemberName="Todas as Avaliacoes">
+        <Table name="dim_avaliacao">
+        </Table>
+        <Level name="Dificuldade Formacao Geral" visible="true" column="grau_dificuldade_prova_formacao_geral" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Dificuldade Componente Especifico" visible="true" column="grau_dificuldade_prova_componente_especifico" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Clareza Enunciados FG" visible="true" column="avaliacao_enunciados_formacao_geral" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Clareza Enunciados CE" visible="true" column="avaliacao_enunciados_componente_especifico" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Avaliacao Infraestrutura Equipamentos" visible="true" column="avaliacao_equipamentos_curso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Avaliacao Ambiente" visible="true" column="avaliacao_ambiente_curso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Tempo de Prova" visible="true" column="tempo_de_prova" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="TimeDimension" visible="true" foreignKey="id_tempo" highCardinality="false" name="Tempo">
+      <Hierarchy name="Calendario_Enade" visible="true" hasAll="true" allMemberName="Todos os Anos">
+        <Table name="dim_tempo">
+        </Table>
+        <Level name="Decada" visible="true" column="decada" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Ano" visible="true" column="ano_enade" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Ciclo Avaliativo" visible="true" column="ciclo" nameColumn="ciclo" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Media Nota Geral" column="nota_geral" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Media Formacao Geral" column="nota_formacao_geral" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Media Componente Especifico" column="nota_componente_especifico" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
